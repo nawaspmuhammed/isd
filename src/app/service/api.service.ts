@@ -15,42 +15,26 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // Create
-  createEmployee(data): Observable<any> {
+  createAlarm(): Observable<any> {
     let url = `${this.baseUri}/create`;
-    return this.http.post(url, data)
+    return this.http.post(url, "")
       .pipe(
         catchError(this.errorMgmt)
       )
   }
 
-  // Get all employees
-  getEmployees() {
+  // Get all alarms
+  getAlarms() {
     return this.http.get(`${this.baseUri}`);
   }
 
-  // Get employee
-  getEmployee(id): Observable<any> {
+  // Get alarms
+  getAlarm(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
       map((res: Response) => {
         return res || {}
       }),
-      catchError(this.errorMgmt)
-    )
-  }
-
-  // Update employee
-  updateEmployee(id, data): Observable<any> {
-    let url = `${this.baseUri}/update/${id}`;
-    return this.http.put(url, data, { headers: this.headers }).pipe(
-      catchError(this.errorMgmt)
-    )
-  }
-
-  // Delete employee
-  deleteEmployee(id): Observable<any> {
-    let url = `${this.baseUri}/delete/${id}`;
-    return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
   }
