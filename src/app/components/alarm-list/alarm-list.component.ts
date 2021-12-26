@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 import { ApiService } from '../../service/api.service';
 
 
@@ -14,9 +15,16 @@ export class AlarmListComponent implements OnInit {
   loading = false;
   constructor(private apiService: ApiService) { 
     this.readAlarm();
+   
+//   interval(3000).subscribe((x =>{
+//     this.onCreateAlarm();
+// }));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+    
+  }
 
   readAlarm(){
     this.apiService.getAlarms().subscribe((data) => {
